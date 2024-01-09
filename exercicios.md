@@ -1,4 +1,5 @@
-# Base de datos libros
+# Exercicios
+## Base de datos libros
 
 > Crea unha función en JS para insertar a través desa función a seguinte bbdd
 
@@ -52,7 +53,9 @@ db.libros.insertOne(
 - Cantas bbdd podes visualizar agora mesmo?
 - Elimina a coleción chamada "posts"
 - Crea outra bbdd chamada borrar, introdúcelle un dato calquera
-- Borra a base de datos creada no punto anterior
+- Borra a base de datos creada no punto anterior.
+
+## Base de datos artigos
 - Crea a seguinte bbdd, elixe un nome apropiado:
 
 ```js
