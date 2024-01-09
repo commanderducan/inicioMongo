@@ -56,7 +56,7 @@ db.libros.insertOne(
 - Crea a seguinte bbdd, elixe un nome apropiado:
 
 ```js
-db.articuos.insertOne(
+db.artigos.insertOne(
   {
     _id: 1,  
     nombre: 'MULTIFUNCION HP DESKJET 2675',
@@ -65,7 +65,7 @@ db.articuos.insertOne(
     stock: 20 
   }
 )
-db.articuos.insertOne(
+db.artigos.insertOne(
   {
     _id: 2,  
     nombre: 'MULTIFUNCION EPSON EXPRESSION XP241',
@@ -74,7 +74,7 @@ db.articuos.insertOne(
     stock: 5 
   }
 )
-db.articuos.insertOne(
+db.artigos.insertOne(
   {
     _id: 3,  
     nombre: 'LED 19 PHILIPS',
@@ -83,7 +83,7 @@ db.articuos.insertOne(
     stock: 2
   }
 )
-db.articuos.insertOne(
+db.artigos.insertOne(
   {
     _id: 4,  
     nombre: 'LED 22 PHILIPS',
@@ -92,7 +92,7 @@ db.articuos.insertOne(
     stock: 4
   }
 )
-db.articuos.insertOne(
+db.artigos.insertOne(
   {
     _id: 5,  
     nombre: 'LED 27 PHILIPS',
@@ -102,7 +102,7 @@ db.articuos.insertOne(
   }
 )
 
-db.articuos.insertOne(
+db.artigos.insertOne(
   {
     _id: 6,  
     nombre: 'LOGITECH M90',
@@ -114,10 +114,18 @@ db.articuos.insertOne(
 
 
 ```
-
+## Utilización de comparadores
 - Imprime todos os datos da bbdd creada
-- Imprimir todos os documentos da colección 'articuos' que non son impresoras.
-- Imprimir todos os artigos que pertencen o rubro de 'mouse'.
-- Imprimir todos os artigos con un precio maior o igual a 5000.
-- Imprimir todas as impresoras que teñen un precio maior o igual a 3500.
-- Imprimir todos os artigos cuyo stock atópase comprendido entre 0 y 4.
+- Imprimir todos os documentos da colección 'artigos' que non son impresoras.
+- Imprimir todos os artigos que pertencen ou rubro de 'mouse'.
+- Imprimir todos os artigos cun precio maior o igual a 5000.
+- Imprimir todas as impresoras que teñen un precio maior ou igual a 3500.
+- Imprimir todos os artigos cuxo stock atópase comprendido entre 0 y 4.
+
+## Borrado de datos
+- Borra os documentos da colección 'artículos' onde 'rubro' son 'impresoras'
+- Borra todos os artigos que teñen un '_id' maior ou igual a 5.
+
+## Modificación 
+- Modifica o prezo do mouse 'LOGITECH M90'
+- Fixa o stock en 0 do artigo onde o '_id' é 6.
