@@ -116,16 +116,23 @@ db.artigos.insertOne(
 ```
 ## Utilización de comparadores
 - Imprime todos os datos da bbdd creada
-- Imprimir todos os documentos da colección 'artigos' que non son impresoras.
 - Imprimir todos os artigos que pertencen ou rubro de 'mouse'.
 - Imprimir todos os artigos cun precio maior o igual a 5000.
 - Imprimir todas as impresoras que teñen un precio maior ou igual a 3500.
 - Imprimir todos os artigos cuxo stock atópase comprendido entre 0 y 4.
+- Imprimir todos os documentos da colección 'artigos' que non son impresoras.
 
 ## Borrado de datos
-- Borra os documentos da colección 'artículos' onde 'rubro' son 'impresoras'
+> Lembra que as funcións son <span style="color:yellow;">deleteOne</span> e <span style="color:yellow;">deleteMany</span>
+- Borra os documentos da colección 'artigos' onde 'rubro' son 'impresoras'
 - Borra todos os artigos que teñen un '_id' maior ou igual a 5.
 
 ## Modificación 
+> Lembra que as funcións son <span style="color:yellow;">updateOne</span> e <span style="color:yellow;">updateMany</span>
+- Borra a base de datos creada de artigos.
+- Volver crear a base de datos de artigos de novo.
 - Modifica o prezo do mouse 'LOGITECH M90'
 - Fixa o stock en 0 do artigo onde o '_id' é 6.
+- Fixa o stock de todos os artigos a 0.
+- Modifica o artigo con '_id' = 6, o cal deberá introducir unha nova propiedade: 'encargados', onde o valor introducido será o seguinte array:
+['Juan','Francisco']
