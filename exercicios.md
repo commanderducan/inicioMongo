@@ -47,16 +47,56 @@ db.libros.insertOne(
 
 
 - Insertar 2 documentos na colección libros
+  ```function insertarDosLibros(){
+  db.libros.insertOne(
+    {
+      _id: 5,  
+      titulo: 'El aleph',
+      autor: 'Borges',
+      editorial: ['Siglo XXI','Planeta'],
+      precio: 20,
+      cantidade: 50 
+    }
+  )
+  db.libros.insertOne(
+    {
+      _id: 6,  
+      titulo: 'Martin Fierro',
+      autor: 'Jose Hernandez',
+      editorial: ['Siglo XXI'],
+      precio: 50,
+      cantidade: 12
+    }
+  )
+}
+
+insertarDosLibros()```
 - Intentar insertar un documento con clave repetida (qué di a consola?, o permite?)
+
 - Mostrar todos os documentos
+  ``db.libros.find()``
 - Agrega unha colección chamada "posts" e inserta 1 documento cunha estructura calquera
+  ``db.createCollection("posts")``
+  ``db.posts.insert("_id": 7, "nombre": "Pepe")``
 - Cantas bbdd podes visualizar agora mesmo?
+  ``show dbs``
+   ``admin       40.00 KiB
+artigos     40.00 KiB
+config     108.00 KiB
+libros      72.00 KiB
+local       72.00 KiB
+outrabbdd  256.00 KiB
+usuarios    40.00 KiB``
 - Elimina a coleción chamada "posts"
+``db.posts.drop()``
 - Crea outra bbdd chamada borrar, introdúcelle un dato calquera
+``use borrar``
+``db.borrar.insertOne("_id":1,"nombre":"Luis")``
 - Borra a base de datos creada no punto anterior.
+``db.dropDatabase()``
 
 ## Base de datos artigos
-- Crea a seguinte bbdd, elixe un nome apropiado:
+- Crea a seguinte bbdd, elixe un nome apropiado: ``use artigos``
 
 ```js
 db.artigos.insertOne(
@@ -118,12 +158,13 @@ db.artigos.insertOne(
 
 ```
 ### Utilización de comparadores
-- Imprime todos os datos da bbdd creada
-- Imprimir todos os artigos que pertencen ou rubro de 'mouse'.
-- Imprimir todos os artigos cun precio maior o igual a 5000.
-- Imprimir todas as impresoras que teñen un precio maior ou igual a 3500.
-- Imprimir todos os artigos cuxo stock atópase comprendido entre 0 y 4.
-- Imprimir todos os documentos da colección 'artigos' que non son impresoras.
+- Imprime todos os datos da bbdd creada ``load('funcion.js')``
+- Imprimir todos os artigos que pertencen ou rubro de 'mouse'. ``db.artigos.find({'rubro': 'mouse'})``
+- Imprimir todos os artigos cun precio maior o igual a 5000. ``db.artigos.find({precio:{ $gte : 5000}})``
+- Imprimir todas as impresoras que teñen un precio maior ou igual a 3500. ``db.artigos.find({$and:[{rubro:'impresora'},{precio:{$gte: 3500}}]})``
+- Imprimir todos os artigos cuxo stock atópase comprendido entre 0 y 4. ``db.artigos.find( { precio: { $gte : 0 , $lte : 4} })``
+
+- Imprimir todos os documentos da colección 'artigos' que non son impresoras. ``db.artigos.find( { rubro: { $nin : ['impresora'] } })``
 
 ### Borrado de datos
 > Lembra que as funcións son <span style="color:yellow;">deleteOne</span> e <span style="color:yellow;">deleteMany</span>
