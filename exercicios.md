@@ -71,7 +71,7 @@ db.libros.insertOne(
 }
 
 insertarDosLibros()```
-- Intentar insertar un documento con clave repetida (qué di a consola?, o permite?)
+- Intentar insertar un documento con clave repetida (qué di a consola?, o permite?) ``MongoServerError: E11000 duplicate key error collection: test.libros index: _id_ dup key: { _id: 5 }``
 
 - Mostrar todos os documentos
   ``db.libros.find()``
@@ -168,18 +168,18 @@ db.artigos.insertOne(
 
 ### Borrado de datos
 > Lembra que as funcións son <span style="color:yellow;">deleteOne</span> e <span style="color:yellow;">deleteMany</span>
-- Borra os documentos da colección 'artigos' onde 'rubro' son 'impresoras'
-- Borra todos os artigos que teñen un '_id' maior ou igual a 5.
+- Borra os documentos da colección 'artigos' onde 'rubro' son 'impresoras' ``db.artigos.deleteMany({rubro:"impresora"})``
+- Borra todos os artigos que teñen un '_id' maior ou igual a 5. ``db.artigos.deleteMany({_id:{$gt:5}})``
 
 ### Modificación 
 > Lembra que as funcións son <span style="color:yellow;">updateOne</span> e <span style="color:yellow;">updateMany</span>
-- Borra a base de datos creada de artigos.
-- Volver crear a base de datos de artigos de novo.
-- Modifica o prezo do mouse 'LOGITECH M90'
-- Fixa o stock en 0 do artigo onde o '_id' é 6.
-- Fixa o stock de todos os artigos a 0.
+- Borra a base de datos creada de artigos. ``db.dropDatabase()``
+- Volver crear a base de datos de artigos de novo. ``load('funcion.js')``
+- Modifica o prezo do mouse 'LOGITECH M90' ``db.artigos.updateMany({nome:"LOGITECH M90",},[{$set:{precio:350}}])``
+- Fixa o stock en 0 do artigo onde o '_id' é 6. ``db.artigos.updateMany({_id:6,},[{$set:{stock:0}}])``
+- Fixa o stock de todos os artigos a 0. ``db.artigos.updateMany({},[{$set:{stock:0}}])``
 - Modifica o artigo con '_id' = 6, o cal deberá introducir unha nova propiedade: 'encargados', onde o valor introducido será o seguinte array:
-['Juan','Francisco']
+['Juan','Francisco'] ``db.artigos.updateMany({_id:6,},[{$set:{encargados:["Juan","Francisco"]}}])``
 
 ## Base de datos de medicamentos
 > Lembra que utilizar un booleano ou un valor *1* ou *0*, realiza a tarefa de mostrar ou ocultar o valor buscado.
@@ -244,17 +244,17 @@ db.medicamentos.insertOne(
 ```
 ### Atopar con ... e uso de 
 
-- Mostra todos os documentos onde só se visualicen o _id e o laboratorio
-- Mostra os medicamentos onde laboratorio sexa 'Roche' e onde o precia sexa menor a 5.
-- Mostra os medicamentos onde laboratorio sexa 'Roche' ou onde o precio sexa maior a 5.
-- Mostra os medicamentos onde laboratorio non sexa 'Bayer'.
-- Mostra os medicamentos onde laboratorio sexa 'Bayer' e onde cantidade non sexa 100.
-- Mostra os laboratorios que sexan 'Bayer' e o precio menor que 6, pero só debes mostrar o nome e o laboratorio
+- Mostra todos os documentos onde só se visualicen o _id e o laboratorio ``db.medicamentos.find({},{id:true,laboratorio:true})``
+- Mostra os medicamentos onde laboratorio sexa 'Roche' e onde o precia sexa menor a 5. ``db.medicamentos.find({$and:[{laboratorio:"Roche"},{precio:{$lt:5}}]})``
+- Mostra os medicamentos onde laboratorio sexa 'Roche' ou onde o precio sexa maior a 5. ``db.medicamentos.find({$or:[{laboratorio:"Roche"},{precio:{$gt:5}}]})``
+- Mostra os medicamentos onde laboratorio non sexa 'Bayer'. ``db.libros.find({ laboratorio: {$ne:"Bayer"}})``
+- Mostra os medicamentos onde laboratorio sexa 'Bayer' e onde cantidade non sexa 100. ``db.medicamentos.find({$and:[{laboratorio:"Bayer"},{cantidade:{$ne:100}}]})``
+- Mostra os laboratorios que sexan 'Bayer' e o precio menor que 6, pero só debes mostrar o nome e o laboratorio ``db.medicamentos.find({$and:[{laboratorio:"Bayer"},{precio:{$lt:6}}]},{nome:true, laboratorio:true})``
 
 ### Eliminar
 
-- Borra os documentos da colección onde laboratorio sexa "Bayer" ou onde precio sexa menor a 3.
+- Borra os documentos da colección onde laboratorio sexa "Bayer" ou onde precio sexa menor a 3. ``db.medicamentos.deleteMany({laboratorio:"Bayer", precio:{$lt:3}})``
 
 ### Modificar
 
-- Cambia a cantidade 200 a todos os medicamentos de 'Roche' onde o precio sexa maior a 5.
+- Cambia a cantidade a 200 a todos os medicamentos de 'Roche' onde o precio sexa maior a 5. ``db.medicamentos.update({laboratorio:"Roche"},[{$set:{cantidade:200}}])``
